@@ -16,14 +16,6 @@ datos_km <- kmeans(datos_scal,k) #centers = Numero de Clusters
 names(datos_km)
 train_preds <- predict(datos_km, train$species)
 
-
-set.seed(47)
-in_train <- sample(nrow(dfl), 99)
-mod_kmeans <- kmeans(dfl[in_train, -1], 99)
-train_preds <- predict(mod_kmeans, dfl[-in_train, -1])
-
-table(train_preds, dfl$species[-in_train])
-
 #asignacion de observaciones al cluster
 datos_km$cluster
 #inercia total
